@@ -7,10 +7,14 @@ const homeRoute = require('./routes/homeRoute');
 
 const app = express();
 
+let port = process.env.PORT || 3000;
+
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.use('/users', usersRoute); 
 app.use(homeRoute); 
 
-app.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app is listening on port http://localhost:${port}`);
+});
